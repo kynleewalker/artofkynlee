@@ -1,0 +1,63 @@
+p {
+    background-color: rgb(255, 138, 181);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    <style> margin-bottom:50px;
+ 
+
+}
+
+h1{
+background-color: chartreuse;
+    font-family: 'Times New Roman', Times, serif;
+    color: gold;
+}
+img{
+    width: 50%
+    height: auto;
+    min-width: 200px;
+}
+
+p{
+    border-style: solid;
+    border-width: 2px;
+    padding: 20px;
+    margin: 50 px;
+    width: 700px;
+}
+html{
+   background-image: url(images/website_background.jpg);
+   background-size: 100%;
+   background-repeat: repeat-y;
+   background-position: 50% 50%
+   background background-attachment: fixed;
+
+h2{
+    border-style: solid;
+    border-width: 0px;
+    padding: 20px;
+    margin: 50 px;
+    width: 700px;
+    color: rgb(0, 0, 0);
+    font-size: 70px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+h3{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: antiquewhite;
+}
+h5{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 200;
+    color: antiquewhite;
+}
+
+h6{
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 200;  
+    color:antiquewhite;
+}
+h7{
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 200;
+    color:antiquewhite;
+}
