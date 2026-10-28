@@ -1,7 +1,7 @@
 p {
     background-color: rgb(255, 138, 181);
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    <style> margin-bottom:50px;
+    margin-bottom:50px;
  
 
 }
@@ -12,7 +12,7 @@ background-color: chartreuse;
     color: gold;
 }
 img{
-    width: 50%
+    width: 50%;
     height: auto;
     min-width: 200px;
 }
@@ -28,9 +28,9 @@ html{
    background-image: url(images/website_background.jpg);
    background-size: 100%;
    background-repeat: repeat-y;
-   background-position: 50% 50%
-   background background-attachment: fixed;
-
+   background-position: 50% 50%;
+   background-background-attachment: fixed;
+}
 h2{
     border-style: solid;
     border-width: 0px;
