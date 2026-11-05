@@ -28,7 +28,7 @@ p{
     color: rgb(27, 55, 25);
 }
 html{
-   background-image: url(images/website_background.jpg);
+   background-image: url(website_background.jpg);
    background-size: 100%;
    background-repeat: repeat-y;
   background-position: 0% 0%;
