@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+      <header class="top-bar">
+     <span><h2><a href="index.html">Kynlee Walker</a></h2></span>
+     <span><h3><a href="works.html">Works</a></h3></span>
+     <span><h3><a href="blog.html">Photos</a></h3></span>
+     <span><h3><a href="about.html">About/CV</a></h3></span>
+</header>
+
+<div class="gallery2">
+
+<div><img src="images/Puppet Parade copy.jpg" alt="Goose Parade [oil on panel]"/></div>
+
+<div><img src="images/Intertwined copy.jpg" alt="Intertwined [ceramic]"/></div>
+
+<div><img src="images/ellafigure.jpg" alt="Oh, Ella [pastel on BFK]"></div>
+
+<div><img src="ezgif-6ad0f7aa7c4ce120.gif" alt="Burning House [relief prints]"/></div>
+
+<div><img src="images/sicklyboy.jpg" alt="Some type of Mary [oil on BFK]"/></div>
+
+<div><img src="images/gooseprint.jpg" alt="Indiana Cryptid [relief lino cut]"/></div>
+
+<div><video src="videos/Video_Art_KynleeWalker_Ambient copy.mov" autoplay loop muted playsinline></video></div>
+
+<div><img src="images/geese tryptic copy.jpg" alt="Geese [oil on panel]"/></div>
+
+<div><img src="images/Naked2Cool.jpg" alt="Flower Figure [pastel on BFK]"/></div>
+
+<div><img src="images/WildGeeseTattoo2 copy.jpg" alt=" Wild Geese [graphite]"/></div>
+
+<div><img src="images/middleman.jpg" alt="I'M MY OWN MIDDLEMAN [lithography print]"/></div>
+
+<div><img src="images/clown.jpg" alt="Odd One Out [lithography print]"/></div>
+
+<div><img src="images/japancat.jpg" alt="Japan Cat [releif prints]"/></div>
+
+<div><img src="images/lizzie&rylee.jpg" alt="Train Goers [gouache]"/></div>
+
+<div><video src="videos/Flipoff copy.mov" autoplay loop muted playsinline></video></div>
+
+<div><img src="images/deadgoose.jpg" alt="Bundle [oil on paper]"/></div>
+
+<div><img src="images/PriscillaLight.jpg" alt="Priscilla's House [oil on panel]"/></div>
+
+<div><img src="images/car window copy.jpg" alt="Car Window [acrylic and gouache on BFK]"/></div>
+
+<div><img src="images/voteformemany.jpg" alt="Vote for me! [relief prints]"/></div>
+
+<div><video src="videos/creature of habit copy.mov" autoplay loop muted playsinline></video></div>
+
+<div><img src="images/figurepink.jpg" alt="Pink Figure [pastel on BFK]"/></div>
+
+<div><img src="images/waxguy.jpg" alt="Untitled [wax]"/></div>
+
+
+</div>
+
+<dialog id="photo-lightbox">
+  <button id="close-lightbox" aria-label="Close">
+    <span>back!</span>
+<img src="images/black-billiard-ball-with-number-eight-cut-out-png copy.png" alt="back">
+  </button>
+  <img id="lightbox-img" src="" alt="">
+  <video id="lightbox-video" src="" controls playsinline hidden></video>
+  <p id="lightbox-caption"></p>
+</dialog>
+
+<script>
+  const lightbox = document.getElementById('photo-lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxVideo = document.getElementById('lightbox-video');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const closeBtn = document.getElementById('close-lightbox');
+
+
+  document.querySelectorAll('.gallery2 img').forEach(img => {
+    img.addEventListener('click', () => {
+        lightboxVideo.hidden = true;
+      lightboxVideo.pause();
+      lightboxImg.hidden = false;
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCaption.textContent = img.alt; // Displays the alt text below the photo
+      lightbox.showModal();
+    });
+  });
+
+  // Open video in lightbox
+  document.querySelectorAll('.gallery2 video').forEach(vid => {
+    vid.addEventListener('click', (e) => {
+      e.preventDefault(); // Prevents inline play/pause when opening lightbox
+      lightboxImg.hidden = true;
+      lightboxVideo.hidden = false;
+      lightboxVideo.src = vid.currentSrc || vid.src;
+      lightboxCaption.textContent = vid.getAttribute('aria-label') || '';
+      lightbox.showModal();
+      lightboxVideo.play();
+    });
+  });
+
+    function closeLightbox() {
+    lightboxVideo.pause(); // Stops audio/video when modal closes
+    lightbox.close();
+  }
+
+// Close when clicking the 'X' button
+  closeBtn.addEventListener('click', () => {
+    lightbox.close();
+  });
+
+  // Close when clicking the dark backdrop outside the image
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.close();
+    }
+  });
+  
+</script>
+  
+</body>
+</html>

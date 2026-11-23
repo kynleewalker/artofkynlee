@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+
+  <header class="top-bar">
+     <span><h2><a href="index.html">Kynlee Walker</a></h2></span>
+     <span><h3><a href="works.html">Works</a></h3></span>
+     <span><h3><a href="blog.html">Photos</a></h3></span>
+     <span><h3><a href="about.html">About/CV</a></h3></span>
+  </header>
+
+    <div class="gallery3">
+  <div>
+<img 
+src="Photos/one.jpg"
+data-slides="Photos/one.jpg, Photos/2.jpg, Photos/3.jpg, Photos/4.jpg,
+Photos/5.jpg, Photos/6.jpg, Photos/7.jpg, Photos/8.jpg,
+Photos/9.jpg, Photos/10.jpg, Photos/11.jpg, Photos/12.jpg,
+Photos/13.jpg, Photos/14.jpg, Photos/19.jpg, Photos/16.jpg,
+Photos/17.jpg, Photos/18.jpg">
+ <p class="group-caption">2025-2026</p>
+  </div>
+  <div>
+<img 
+src="Photos/J1.jpg"
+data-slides="Photos/J1.jpg, Photos/J2.jpg, Photos/J3.jpg, Photos/J12.jpg, Photos/othereight.jpg, Photos/J4.jpg, Photos/J5.jpg,
+Photos/J6.jpg, Photos/J7.jpg, Photos/J8.jpg, Photos/J9.jpg,
+Photos/J10.jpg, Photos/J11.jpg">
+  <p class="group-caption">2024</p>
+</div>
+
+  <div>
+<img 
+src="Photos/otherone.jpg"
+data-slides="Photos/otherone.jpg, Photos/othertwo.jpg, Photos/otherthree.jpg, Photos/otherfour.jpg,
+Photos/otherfive.jpg, Photos/othersix.jpg, Photos/otherseven.jpg,
+Photos/othernine.jpg">
+<p class="group-caption">Misc.</p>
+</div>
+</div>
+
+<dialog id="photo-lightbox">
+  <button id="close-lightbox" aria-label="Close">
+    <span>back!</span>
+    <img src="images/tumblr_726538303eb822cdb2f50c73984b1557_86474b28_400 copy.webp" alt="back">
+  </button>
+
+  <button id="prev-slide" class="nav-arrow" aria-label="Previous photo">&#10094;</button>
+  
+  <div class="lightbox-stage">
+    <img id="lightbox-img" src="" alt="">
+    <p id="lightbox-caption"></p>
+    <span id="slide-counter"></span>
+  </div>
+
+  <button id="next-slide" class="nav-arrow" aria-label="Next photo">&#10095;</button>
+</dialog>
+
+<script>
+  const lightbox = document.getElementById('photo-lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const slideCounter = document.getElementById('slide-counter');
+  const prevBtn = document.getElementById('prev-slide');
+  const nextBtn = document.getElementById('next-slide');
+  const closeBtn = document.getElementById('close-lightbox');
+
+  let currentSlides = [];
+  let currentCaptions = [];
+  let slideIndex = 0;
+
+  function renderSlide() {
+    lightboxImg.src = currentSlides[slideIndex];
+    lightboxImg.alt = currentCaptions[slideIndex] || '';
+    lightboxCaption.textContent = currentCaptions[slideIndex] || '';
+
+    // Show arrows & counter only if there is more than 1 photo
+    const isMulti = currentSlides.length > 1;
+    prevBtn.hidden = !isMulti;
+    nextBtn.hidden = !isMulti;
+    slideCounter.textContent = isMulti ? `${slideIndex + 1} / ${currentSlides.length}` : '';
+  }
+    document.querySelectorAll('.gallery3 img').forEach(img => {
+    img.addEventListener('click', () => {
+      if (img.dataset.slides) {
+        currentSlides = img.dataset.slides.split(',').map(s => s.trim());
+        currentCaptions = img.dataset.captions 
+          ? img.dataset.captions.split('|').map(c => c.trim()) 
+          : [img.alt];
+      } else {
+        currentSlides = [img.src];
+        currentCaptions = [img.alt];
+      }
+
+      slideIndex = 0;
+      renderSlide();
+      lightbox.showModal();
+    });
+  });
+   prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    slideIndex = (slideIndex - 1 + currentSlides.length) % currentSlides.length;
+    renderSlide();
+  });
+
+  nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    slideIndex = (slideIndex + 1) % currentSlides.length;
+    renderSlide();
+  });
+
+  // Optional: Support Left/Right keyboard arrow keys
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.open || currentSlides.length <= 1) return;
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'ArrowRight') nextBtn.click();
+  });
+
+  closeBtn.addEventListener('click', () => lightbox.close());
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) lightbox.close();
+  });
+</script>
+
+</body>
+</html>
